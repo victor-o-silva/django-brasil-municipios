@@ -15,7 +15,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.admin',
     #
     'brasil_municipios',
     'check_all_municipios'
