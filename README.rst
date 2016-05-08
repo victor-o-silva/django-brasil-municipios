@@ -10,6 +10,11 @@ django-brasil-municipios
    :target: https://landscape.io/github/victor-o-silva/django-brasil-municipios/master
    :alt: Code Health
 
+.. image:: https://readthedocs.org/projects/django-brasil-municipios/badge/?version=latest
+   :target: http://django-brasil-municipios.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 
 A GeoDjango app with all Brazilian municipalities and their geographical polygons, with data downloaded from the IBGE (Brazilian Institute of Geography and Statistics) `website <http://downloads.ibge.gov.br/downloads_geociencias.htm>`_.
 
+Documentation can be found `here (RTD) <http://django-brasil-municipios.readthedocs.io/en/latest/>`_.
