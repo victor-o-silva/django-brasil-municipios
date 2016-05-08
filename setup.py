@@ -10,7 +10,7 @@ setup(
     version='0.1',
     author='Victor Oliveira da Silva',
     author_email='victor_o_silva@hotmail.com',
-    packages=find_packages(exclude=('travis_test_project',)),
+    packages=find_packages(exclude=('travis_test_project', 'docs')),
     url='https://github.com/victor-o-silva/django-brasil-municipios',
     license='MIT',
     include_package_data=True,

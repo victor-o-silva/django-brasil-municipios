@@ -5,3 +5,4 @@ uses:
     - django
 ignore-paths:
     - travis_test_project/
+    - docs/
