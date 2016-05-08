@@ -1,0 +1,7 @@
+strictness: medium
+pep8:
+    full: true
+uses:
+    - django
+ignore-paths:
+    - travis_test_project/
