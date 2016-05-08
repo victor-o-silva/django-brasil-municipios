@@ -2,7 +2,7 @@
 
 from setuptools import find_packages, setup
 
-with open('README.RST', 'r') as readme_file:
+with open('README.rst', 'r') as readme_file:
     long_description = readme_file.read()
 
 setup(
@@ -10,7 +10,7 @@ setup(
     version='0.1',
     author='Victor Oliveira da Silva',
     author_email='victor_o_silva@hotmail.com',
-    packages=find_packages(),
+    packages=find_packages(exclude=('travis_test_project',)),
     url='https://github.com/victor-o-silva/django-brasil-municipios',
     license='MIT',
     include_package_data=True,
