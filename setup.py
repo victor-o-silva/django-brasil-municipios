@@ -15,7 +15,7 @@ setup(
     license='MIT',
     include_package_data=True,
     download_url='https://github.com/victor-o-silva/'
-                 'geodjango-brasil-municipios/tarball/0.1',
+                 'django-brasil-municipios/tarball/0.1',
     description='A GeoDjango app with all Brazilian municipalities and their '
                 'geographical polygons, with data downloaded from the IBGE '
                 '(Brazilian Institute of Geography and Statistics) website.',
