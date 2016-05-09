@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import ftplib
 import os
 import shutil
+import sys
 import zipfile
 # third party
 from django.core.management.base import BaseCommand
@@ -133,11 +134,33 @@ def fetch_data_and_create_municipios(print_out):
 class Command(BaseCommand):
     help = 'Loads brazilian municipalities from IBGE'
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--force-delete',
+            action='store_true',
+            help='Force deletion of pre-existing Municipios.'
+        )
+
     def handle(self, *args, **options):
         def print_out(data, error=False):
             if error:
                 self.stderr.write(self.style.ERROR(data))
             else:
                 self.stdout.write(self.style.SUCCESS(data))
+
+        if Municipio.objects.exists() and options['force_delete'] is False:
+            msg_line1 = '''
+There are Municipios in the database already.
+In order to import the Municipios data from IBGE, the existing records
+must be deleted to avoid duplication, but that can cause data loss
+if you have related objects (check
+https://docs.djangoproject.com/en/dev/ref/models/querysets/#delete
+for more information).'''
+            msg_line2 = '''
+If you are sure that you want to delete all existing Municipios and create
+new ones, run this same management command with the --force-delete flag.'''
+            msg = '\n'.join((msg_line1, msg_line2))
+            print_out(msg, error=True)
+            sys.exit(1)
 
         fetch_data_and_create_municipios(print_out)
