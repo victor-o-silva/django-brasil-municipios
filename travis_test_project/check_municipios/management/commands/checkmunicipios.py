@@ -5,7 +5,7 @@ import sys
 from django.core.management.base import BaseCommand
 from brasil_municipios.models import Municipio, STATES
 # project
-from .points_to_test import CHECK_POINTS
+from ._points_to_test import CHECK_POINTS
 
 
 ALL_STATES = [choice[0] for choice in STATES]
