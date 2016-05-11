@@ -22,9 +22,8 @@ A GeoDjango app with all Brazilian municipalities and their geographical polygon
 
 Documentation can be found `here (RTD) <http://django-brasil-municipios.readthedocs.io/en/latest/>`_.
 
-.. image:: http://django-brasil-municipios.readthedocs.io/en/latest/_images/Admin_002.png
+.. image:: http://django-brasil-municipios.readthedocs.io/en/latest/_images/Admin_001.png
    :align: center
 
-
-.. image:: http://django-brasil-municipios.readthedocs.io/en/latest/_images/Admin_004.png
+.. image:: http://django-brasil-municipios.readthedocs.io/en/latest/_images/Admin_003.png
    :align: center

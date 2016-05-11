@@ -56,6 +56,20 @@ Then, you can run the following command to actually download the Brazilian munic
 
 That will take some time to complete. Once the data is successfully imported, you can start a `Django shell <https://docs.djangoproject.com/en/dev/ref/django-admin/#shell>`_ and run the example shown before in the `Demo Code`_.
 
+-----------------------------
+Load data for selected states
+-----------------------------
+
+If you don't want to load data for the municipalities of all the Brazilian states, you can specify the desired states with the ``--state`` flag.
+
+Load data only for São Paulo (SP)::
+
+    $ python manage.py loadmunicipios --state SP
+
+Load data only for Tocantins (TO) and Maranhão (MA)::
+
+    $ python manage.py loadmunicipios --state TO --state MA
+
 ************
 Django Admin
 ************
@@ -69,12 +83,6 @@ If your project uses `Django Admin <https://docs.djangoproject.com/en/dev/ref/co
    :align: center
 
 .. image:: _static/Admin_003.png
-   :align: center
-
-.. image:: _static/Admin_004.png
-   :align: center
-
-.. image:: _static/Admin_005.png
    :align: center
 
 .. Contents:

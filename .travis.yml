@@ -24,9 +24,19 @@ install:
 before_script:
   - psql -c 'create database travis_postgis;' -U postgres
   - psql -c 'CREATE EXTENSION postgis;' -U postgres -d travis_postgis
-  - cd travis_test_project
-  - python manage.py migrate
-  - python manage.py loadmunicipios
 
 script:
-  - python manage.py checkallmunicipios
+  - cd travis_test_project
+  - python manage.py migrate
+
+  - python manage.py loadmunicipios --state RO
+  - python manage.py checkmunicipios --state RO
+  - python manage.py deletemunicipios
+
+  - python manage.py loadmunicipios --state AP --state AC
+  - python manage.py checkmunicipios --state AP --state AC
+  - python manage.py deletemunicipios
+
+  - python manage.py loadmunicipios
+  - python manage.py checkmunicipios
+  - python manage.py deletemunicipios

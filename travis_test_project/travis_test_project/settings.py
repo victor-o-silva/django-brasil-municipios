@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     #
     'brasil_municipios',
-    'check_all_municipios'
+    'check_municipios'
 ]
 MIDDLEWARE_CLASSES = []
 ROOT_URLCONF = 'travis_test_project.urls'

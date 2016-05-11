@@ -9,38 +9,10 @@ import zipfile
 from django.core.management.base import BaseCommand
 from django.contrib.gis.utils import LayerMapping
 # project
-from ...models import Municipio
+from ...models import Municipio, STATES
 
 
-STATES = (
-    'AC',  # Acre
-    'AL',  # Alagoas
-    'AM',  # Amazonas
-    'AP',  # Amapá
-    'BA',  # Bahia
-    'CE',  # Ceará
-    'DF',  # Distrito Federal
-    'ES',  # Espírito Santo
-    'GO',  # Goiás
-    'MA',  # Maranhão
-    'MG',  # Minas Gerais
-    'MS',  # Mato Grosso do Sul
-    'MT',  # Mato Grosso
-    'PA',  # Pará
-    'PB',  # Paraíba
-    'PE',  # Pernambuco
-    'PI',  # Piauí
-    'PR',  # Paraná
-    'RJ',  # Rio de Janeiro
-    'RN',  # Rio Grande do Norte
-    'RO',  # Rondônia
-    'RR',  # Roraima
-    'RS',  # Rio Grande do Sul
-    'SC',  # Santa Catarina
-    'SE',  # Sergipe
-    'SP',  # São Paulo
-    'TO',  # Tocantins
-)
+ALL_STATES = [choice[0] for choice in STATES]
 
 DOWNLOADS_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
@@ -105,14 +77,14 @@ def import_data(shp_file_path, state, print_out):
     print_out('{} Municipios were created for {}.'.format(count, state))
 
 
-def fetch_data_and_create_municipios(print_out):
+def fetch_data_and_create_municipios(states, print_out):
     # Create downloads directory
     if not os.path.isdir(DOWNLOADS_PATH):
         os.mkdir(DOWNLOADS_PATH)
 
     try:
         # For each state: fetch, parse and save Municipios data
-        for state in STATES:
+        for state in states:
             print_out('-' * 60)
             zip_file_path = download_from_ibge(state, print_out)
             shp_file_path = unzip_file(zip_file_path, state, print_out)
@@ -126,10 +98,20 @@ class Command(BaseCommand):
     help = 'Loads brazilian municipalities from IBGE'
 
     def add_arguments(self, parser):
-        pass
+        parser.add_argument(
+            '--state',
+            action='append',
+            choices=ALL_STATES,
+            help='Specify which state(s) will have its (their) municipalities'
+                 ' loaded. This argument can be specified multiple times.'
+        )
 
     def handle(self, *args, **options):
         def print_out(msg):
             self.stdout.write(self.style.SUCCESS(msg))
 
-        fetch_data_and_create_municipios(print_out)
+        states = options['state']
+        if not states:
+            states = ALL_STATES
+
+        fetch_data_and_create_municipios(states, print_out)
