@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 import ftplib
 import os
 import shutil
-import sys
 import zipfile
 # third party
 from django.core.management.base import BaseCommand
@@ -47,12 +46,6 @@ DOWNLOADS_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     'IBGE_DOWNLOADS'
 )
-
-
-def delete_municipios(print_out):
-    print_out('Deleting existing Municipios.')
-    count = Municipio.objects.all().delete()[0]
-    print_out('{} Municipios were deleted.'.format(count))
 
 
 def download_from_ibge(state, print_out):
@@ -104,6 +97,7 @@ def import_data(shp_file_path, state, print_out):
                  shp_file_path,
                  model_shp_mapping,
                  transform=False,
+                 unique='geocode',
                  encoding='utf-8').save(strict=True)
 
     # Update Municipios' `state` field
@@ -112,9 +106,6 @@ def import_data(shp_file_path, state, print_out):
 
 
 def fetch_data_and_create_municipios(print_out):
-    # Delete existing Municipios to avoid duplication
-    delete_municipios(print_out)
-
     # Create downloads directory
     if not os.path.isdir(DOWNLOADS_PATH):
         os.mkdir(DOWNLOADS_PATH)
@@ -135,32 +126,10 @@ class Command(BaseCommand):
     help = 'Loads brazilian municipalities from IBGE'
 
     def add_arguments(self, parser):
-        parser.add_argument(
-            '--force-delete',
-            action='store_true',
-            help='Force deletion of pre-existing Municipios.'
-        )
+        pass
 
     def handle(self, *args, **options):
-        def print_out(data, error=False):
-            if error:
-                self.stderr.write(self.style.ERROR(data))
-            else:
-                self.stdout.write(self.style.SUCCESS(data))
-
-        if Municipio.objects.exists() and options['force_delete'] is False:
-            msg_line1 = '''
-There are Municipios in the database already.
-In order to import the Municipios data from IBGE, the existing records
-must be deleted to avoid duplication, but that can cause data loss
-if you have related objects (check
-https://docs.djangoproject.com/en/dev/ref/models/querysets/#delete
-for more information).'''
-            msg_line2 = '''
-If you are sure that you want to delete all existing Municipios and create
-new ones, run this same management command with the --force-delete flag.'''
-            msg = '\n'.join((msg_line1, msg_line2))
-            print_out(msg, error=True)
-            sys.exit(1)
+        def print_out(msg):
+            self.stdout.write(self.style.SUCCESS(msg))
 
         fetch_data_and_create_municipios(print_out)
