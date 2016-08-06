@@ -30,7 +30,7 @@ def download_from_ibge(state, print_out):
         ftp.login('anonymous', 'anonymous')
         ftp.cwd(
             'organizacao_do_territorio/malhas_territoriais/'
-            'malhas_municipais/municipio_2015/{}'.format(state)
+            'malhas_municipais/municipio_2015/UFs/{}'.format(state)
         )
         ftp.retrbinary(
             'RETR {}_municipios.zip'.format(state.lower()),
