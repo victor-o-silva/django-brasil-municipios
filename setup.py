@@ -7,7 +7,7 @@ with open('README.rst', 'r') as readme_file:
 
 setup(
     name='django-brasil-municipios',
-    version='0.4',
+    version='0.5',
     author='Victor Oliveira da Silva',
     author_email='victor_o_silva@hotmail.com',
     packages=find_packages(exclude=('travis_test_project', 'docs')),
@@ -15,7 +15,7 @@ setup(
     license='MIT',
     include_package_data=True,
     download_url='https://github.com/victor-o-silva/'
-                 'django-brasil-municipios/tarball/0.4',
+                 'django-brasil-municipios/tarball/0.5',
     description='A GeoDjango app with all Brazilian municipalities and their '
                 'geographical polygons, with data downloaded from the IBGE '
                 '(Brazilian Institute of Geography and Statistics) website.',
