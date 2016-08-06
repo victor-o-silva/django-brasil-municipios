@@ -28,7 +28,10 @@ def download_from_ibge(state, print_out):
     with open(zip_file_path, 'wb') as zip_file:
         ftp = ftplib.FTP('geoftp.ibge.gov.br')
         ftp.login('anonymous', 'anonymous')
-        ftp.cwd('malhas_digitais/municipio_2014/{}'.format(state))
+        ftp.cwd(
+            'organizacao_do_territorio/malhas_territoriais/'
+            'malhas_municipais/municipio_2015/{}'.format(state)
+        )
         ftp.retrbinary(
             'RETR {}_municipios.zip'.format(state.lower()),
             zip_file.write
