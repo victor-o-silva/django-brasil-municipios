@@ -1519,7 +1519,7 @@ CHECK_POINTS = [
     {'point': Point(-56.69350628531518, -11.773271962331137), 'municipio': "PORTO DOS GAÚCHOS", 'geocode': '5106802', 'state': 'MT'},
     {'point': Point(-58.850387333906575, -15.89287454332549), 'municipio': "PORTO ESPERIDIÃO", 'geocode': '5106828', 'state': 'MT'},
     {'point': Point(-57.210865346776075, -15.53044275807676), 'municipio': "PORTO ESTRELA", 'geocode': '5106851', 'state': 'MT'},
-    {'point': Point(-54.25729381553266, -15.809934304574426), 'municipio': "POXORÉO", 'geocode': '5107008', 'state': 'MT'},
+    {'point': Point(-54.25729381553266, -15.809934304574426), 'municipio': "POXORÉU", 'geocode': '5107008', 'state': 'MT'},
     {'point': Point(-54.21439769968879, -15.126886991041744), 'municipio': "PRIMAVERA DO LESTE", 'geocode': '5107040', 'state': 'MT'},
     {'point': Point(-52.71575271964448, -12.226670172990055), 'municipio': "QUERÊNCIA", 'geocode': '5107065', 'state': 'MT'},
     {'point': Point(-58.50033988288061, -14.934024795857596), 'municipio': "RESERVA DO CABAÇAL", 'geocode': '5107156', 'state': 'MT'},
