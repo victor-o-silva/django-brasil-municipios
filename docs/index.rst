@@ -56,6 +56,16 @@ Then, you can run the following command to actually download the Brazilian munic
 
 That will take some time to complete. Once the data is successfully imported, you can start a `Django shell <https://docs.djangoproject.com/en/dev/ref/django-admin/#shell>`_ and run the example shown before in the `Demo Code`_.
 
+-------------------------------------------------------------
+Error ``ftplib.error_perm: 550 Failed to change directory.``
+-------------------------------------------------------------
+
+If the error ``ftplib.error_perm`` is raised when you try to load the data, it's because
+`IBGE <http://downloads.ibge.gov.br/downloads_geociencias.htm>`_ changed the directory structure of
+their FTP server. This means that this library must be updated to match their new structure.
+Just `open an issue on GitHub <https://github.com/victor-o-silva/django-brasil-municipios/issues/new>`_
+to let me know of the problem, and I'll have it fixed as soon as possible.
+
 -----------------------------
 Load data for selected states
 -----------------------------
