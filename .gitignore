@@ -64,3 +64,6 @@ venv
 
 # Backup files
 *~
+
+# Editors / IDEs
+.vscode
